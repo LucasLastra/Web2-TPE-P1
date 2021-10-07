@@ -1,8 +1,6 @@
 # Web 2 - Trabajo Práctico Especial Parte 1
 
-Inegrantes: 
--Lastra Lucas
--Rubiales Lucía
+Integrantes: Lastra Lucas, Rubiales Lucía.
 
 
 TPE - Parte 1
