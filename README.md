@@ -75,3 +75,63 @@ En el caso de trabajos grupales, la defensa es de cada miembro por separado. Tod
 Notas
 * Autenticación y seguridad: Se recomienda comenzar con la sección “privada” sin autenticación. Una vez dada la clase de seguridad del 27/09 es muy sencillo protegerlo con usuario y contraseña.
 ** Vistas: Se recomienda mantener una UI super sencilla hasta que se dé la clase de Templates Engine del 20/09
+
+
+
+
+
+Canciones:
+Nombre: Feel Good Inc
+Artista: Gorillaz
+Álbum: Demon Days
+Fecha de lanzamiento: 2005
+Géneros: Rock, Hip-hop/rap
+
+Nombre: Pick U Up
+Artista: Foster the People
+Álbum: Pick U Up
+Fecha de lanzamiento: 2019
+Género: Alternativa/independiente
+
+Nombre: Breaking the habit
+Artista: Linkin Park
+Álbum: Meteora
+Fecha de lanzamiento: 2003
+Géneros: Rock alternativo, Alternativa/independiente
+
+Nombre: Electric Love
+Artista: BØRNS
+Álbum: Dopamine
+Fecha de lanzamiento: 2015
+Género: Alternativa/independiente
+
+Nombre: Veneno
+Artista: La Renga
+Álbum: Despedazado por mil partes
+Fecha de lanzamiento: 1996
+Género: Rock
+
+Nomnre: Hit the road Jack
+Artista: Ray Charles
+Álbum: Ray Charles Greatest Hits
+Fecha de lanzamiento: 1962
+Genero: R&B/Soul
+
+Nombre: Desaparecido
+Artista: Manu Chao
+Álbum: Clandestino
+Fecha de lanzamiento: 1998
+Género: Reggae
+
+Nombre: Valerie
+Artista: Amy Winehouse
+Álbum: Back to Black
+Fecha de lanzamiento: 2007
+Género: R&B/Soul
+
+Nombre: Eleanor Rigby
+Artista: The Beatles
+Álbum: Revolver
+Fecha de lanzamiento: 1966
+Género: Rock
+
