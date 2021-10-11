@@ -31,5 +31,4 @@ class AdminController {
         } 
             
     }
-}//prueba, aber
-
+}
