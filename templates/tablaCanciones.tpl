@@ -3,8 +3,6 @@
 <div class="container">
 
     <h1>{$titulo}</h1>
-
-
     <table class="table table-striped table-hover table-light">
         <thead>
             <tr>

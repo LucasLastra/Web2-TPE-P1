@@ -8,7 +8,7 @@ class TablasModel{
      }
 
      function getCanciones(){
-          $query = $this->db->prepare('SELECT * FROM canciones AS c INNER JOIN genero AS g ON c.genero_id_genero = g.id_genero');
+          $query = $this->db->prepare('SELECT * FROM canciones AS c INNER JOIN genero AS g ON c.fk_genero = g.id_genero');
           $query->execute();
           return $query->fetchAll(PDO::FETCH_OBJ);
      }
@@ -21,7 +21,7 @@ class TablasModel{
 
      function getCancion($id){
           $query = $this->db->prepare( "SELECT * FROM canciones AS c INNER JOIN genero AS g 
-          ON c.genero_id_genero = g.id_genero WHERE id_cancion=?");
+          ON c.fk_genero = g.id_genero WHERE id_cancion=?");
 
           $query->execute(array($id));
           return $query->fetch(PDO::FETCH_OBJ);
@@ -29,10 +29,10 @@ class TablasModel{
 
      function getGenero($id){
           $query = $this->db->prepare( "SELECT * FROM canciones AS c INNER JOIN genero AS g 
-          ON c.genero_id_genero = g.id_genero WHERE c.genero_id_genero=?");
+          ON c.fk_genero = g.id_genero WHERE c.fk_genero=?");
 
           $query->execute(array($id));
-          return $query->fetch(PDO::FETCH_OBJ);
+          return $query->fetchAll(PDO::FETCH_OBJ);
      }
 
 

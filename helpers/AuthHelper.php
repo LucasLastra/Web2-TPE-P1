@@ -8,7 +8,11 @@ class AuthHelper{
     function checkLoggedIn(){
         session_start();
         if(!isset($_SESSION["usuario"])){
-            header("Location: ".BASE_URL."login");
+          //  header("Location: ".BASE_URL."login");
+          return false;
+
+        }else{
+            return true;
         }
     }
 
@@ -17,5 +21,12 @@ class AuthHelper{
             return $_SESSION["usuario"];
         }
     }
+
+    function isAdmin(){
+        if(isset($_SESSION["isAdmin"])){
+            return $_SESSION["isAdmin"];
+        }
+    }
+
 
 }
