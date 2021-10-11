@@ -8,11 +8,12 @@ class IndexView {
         $this->smarty = new Smarty();
     }
 
-    function showIndex(){
-        $this->smarty->assign('titulo', 'Inicio');        
-
+    function showIndex($name){
+        $this->smarty->assign('titulo', 'Inicio');  
+        $this->smarty->assign('pagina', 'home');
+        $this->smarty->assign('userName', $name);
         $this->smarty->display('templates/index.tpl');
-    }
+    } 
     
     function showHomeLocation(){
         header("Location: ".BASE_URL."home");
