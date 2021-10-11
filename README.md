@@ -85,7 +85,7 @@ Nombre: Feel Good Inc
 Artista: Gorillaz
 Álbum: Demon Days
 Fecha de lanzamiento: 2005
-Géneros: Rock, Hip-hop/rap
+Géneros: Rock
 
 Nombre: Pick U Up
 Artista: Foster the People
@@ -97,7 +97,7 @@ Nombre: Breaking the habit
 Artista: Linkin Park
 Álbum: Meteora
 Fecha de lanzamiento: 2003
-Géneros: Rock alternativo, Alternativa/independiente
+Géneros: Rock alternativo
 
 Nombre: Electric Love
 Artista: BØRNS
