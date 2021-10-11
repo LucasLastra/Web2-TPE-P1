@@ -15,9 +15,10 @@ class IndexController{
     }
 
     function showHome(){
-        $this->authHelper->checkLoggedIn();
+        $islogged = $this->authHelper->checkLoggedIn();
+        $isAdmin = $this->authHelper->isAdmin();
         $name = $this->authHelper->getUserName();
-        $this->view->showIndex($name);
+        $this->view->showIndex($name, $islogged, $isAdmin);
     }
     
 }

@@ -29,11 +29,11 @@ CREATE TABLE IF NOT EXISTS `canciones` (
   `nombre` VARCHAR(45) NOT NULL,
   `album` VARCHAR(45) NOT NULL,
   `artista` VARCHAR(45) NOT NULL,
-  `genero_id_genero` INT NOT NULL,
-  PRIMARY KEY (`id_cancion`, `genero_id_genero`),
-  INDEX `fk_canciones_genero_idx` (`genero_id_genero` ASC) ,
+  `fk_genero` INT NOT NULL,
+  PRIMARY KEY (`id_cancion`, `fk_genero`),
+  INDEX `fk_canciones_genero` (`fk_genero` ASC) ,
   CONSTRAINT `fk_canciones_genero`
-    FOREIGN KEY (`genero_id_genero`)
+    FOREIGN KEY (`fk_genero`)
     REFERENCES `genero` (`id_genero`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -51,7 +51,7 @@ INSERT INTO genero
 
 
 INSERT INTO canciones
-(nombre, artista, album, fecha, genero_id_genero)
+(nombre, artista, album, fecha, fk_genero)
  VALUES
 ('Feel Good Inc','Gorillaz','Demon Days','2005',5),
 ('Pick U Up','Foster the People','Pick U Up','2019',1),

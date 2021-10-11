@@ -5,15 +5,16 @@
         <a class="nav-link {if $pagina == 'canciones'}active{/if}" aria-current="page" href="/canciones">Canciones</a>
         <a class="nav-link {if $pagina == 'generos'}active{/if}" aria-current="page" href="/generos">Géneros</a>
 
-        {if !isset($userName)}
+        {if !$logueado}
         <a class="nav-link {if $pagina == 'login'}active{/if}" href="/login">Log in</a>
         <a class="nav-link {if $pagina == 'signup'}active{/if}" href="/signup">Sign up</a>
         {else}
         <a class="nav-link" href="#">¡Hola, {$userName}!</a>
-        <a class="nav-link" href="/logout">Log out</a>
+            {if $isAdmin}
+            <a class="nav-link" href="/abm">Administrar bases de datos</a>
+            {/if}
+            <a class="nav-link" href="/logout">Log out</a>
         {/if}
-        
-
     </div>
 
 </nav>

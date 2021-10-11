@@ -15,33 +15,34 @@ class TablasController{
     }
 
     function showCanciones(){
-        $this->authHelper->checkLoggedIn();
+        $islogged = $this->authHelper->checkLoggedIn();
         $name = $this->authHelper->getUserName();
+        $isAdmin = $this->authHelper->isAdmin();
         $canciones = $this->model->getCanciones();
-        $this->view->showCanciones($name, $canciones);
+        $this->view->showCanciones($name, $canciones, $islogged, $isAdmin);
     }
 
     function showGeneros(){
-        $this->authHelper->checkLoggedIn();
+        $islogged = $this->authHelper->checkLoggedIn();
         $name = $this->authHelper->getUserName();
+        $isAdmin = $this->authHelper->isAdmin();
         $generos = $this->model->getGeneros();
-        $this->view->showGeneros($name, $generos);
+        $this->view->showGeneros($name, $generos, $islogged, $isAdmin);
     }
 
     function infoCancion($id){
-        $this->authHelper->checkLoggedIn();
+        $islogged = $this->authHelper->checkLoggedIn();
         $name = $this->authHelper->getUserName();
+        $isAdmin = $this->authHelper->isAdmin();
         $cancion = $this->model->getCancion($id);
-        $this->view->showCancion($name, $cancion);
+        $this->view->showCancion($name, $cancion, $islogged, $isAdmin);
     }
 
     function infoGenero($id){
-        $this->authHelper->checkLoggedIn();
+        $islogged = $this->authHelper->checkLoggedIn();
         $name = $this->authHelper->getUserName();
+        $isAdmin = $this->authHelper->isAdmin();
         $genero = $this->model->getGenero($id);
-        $this->view->showGenero($name, $genero);
+        $this->view->showGenero($name, $genero, $islogged, $isAdmin);
     }
-
-
-    
 }

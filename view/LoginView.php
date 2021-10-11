@@ -8,16 +8,22 @@ class LoginView {
         $this->smarty = new Smarty();
     }
 
+    //funcion de ayuda para no repetir codigo
+    private function smartyAssign($islogged, $isAdmin, $titulo, $pagina){
+        $this->smarty->assign('titulo', $titulo);  
+        $this->smarty->assign('pagina', $pagina);
+        $this->smarty->assign('logueado', $islogged);
+        $this->smarty->assign('isAdmin', $isAdmin);
+    }
+
     function showLogin($mensaje = ''){
-        $this->smarty->assign('titulo', 'Iniciar Sesión');
-        $this->smarty->assign('pagina', 'login');  
+        $this->smartyAssign(false, false, 'Iniciar Sesión', 'login');
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('templates/login.tpl');
     }
 
     function showSignup($mensaje = ''){
-        $this->smarty->assign('titulo', 'Registrarse'); 
-        $this->smarty->assign('pagina', 'signup');       
+        $this->smartyAssign(false, false, 'Registrarse', 'signup');
         $this->smarty->assign('mensaje', $mensaje); 
         $this->smarty->display('templates/login.tpl');
     }
@@ -28,12 +34,6 @@ class LoginView {
 
    function showHome(){
     header("Location: ".BASE_URL."home");
-    }
-
-    function logged($usuario){
-        $this->smarty->assign('logged', 'logged');
-        $this->smarty->assign('usuario', $usuario);
-        $this->smarty->display('templates/index.tpl');
     }
 
 }

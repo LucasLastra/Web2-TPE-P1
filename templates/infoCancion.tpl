@@ -22,5 +22,6 @@
         </tr>
     </tbody>
 </table>
+<a href="../canciones"><button type="button" class="btn btn-outline-dark">Volver al listado</button></a>
 </div>
 {include file='templates/footer.tpl'}
