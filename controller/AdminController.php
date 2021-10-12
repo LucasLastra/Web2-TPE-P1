@@ -30,5 +30,16 @@ class AdminController {
             $this->TablasView-> showCanciones ();
         } 
             
+    } 
+    //ver como agregar el delete que esta en el model
+
+    function addGenero($id) {
+        $this->authHelper->isAdmin();
+        if (is_null($id)) {
+            $this->AdminModel->addCategoria ($_POST['genero'], $_POST['nombre']);
+        } else {
+            $this->AdminModel->actualizarGenero($id, $_POST['genero'], $_POST['nombre']);
+        }
+        $this->view-> showHomeLocation(); //Capaz hay que cambiar adonde va
     }
 }
