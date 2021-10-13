@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-{include file='templates/navbar.tpl'}
+
 <div class="container">
     <h2>Lista de canciones con el género {$titulo}</h2>
 <table class="table table-striped table-hover table-light">
