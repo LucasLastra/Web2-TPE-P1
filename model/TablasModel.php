@@ -35,6 +35,4 @@ class TablasModel{
           return $query->fetchAll(PDO::FETCH_OBJ);
      }
 
-
-
 }

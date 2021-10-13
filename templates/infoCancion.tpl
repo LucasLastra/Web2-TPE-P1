@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-{include file='templates/navbar.tpl'}
+
 <div class="container">
 <table class="table table-striped table-hover table-light">
     <thead>

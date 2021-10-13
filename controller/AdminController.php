@@ -6,8 +6,11 @@ require_once "./Helpers/AuthHelper.php";
 class AdminController {
     private $model;
     private $view;
-    private $AuthHelper;
-
+    private $authHelper;
+    private $name;
+    private $canciones;
+    private $islogged;
+    private $isAdmin;
 
     function __construct() {
         $this-> model = new AdminModel();
@@ -15,8 +18,16 @@ class AdminController {
         $this-> authHelper = new AuthHelper ();
     }
 
+    //función privada que trae todos los datos necesarios para mostrar las páginas por cada acción
+    private function getData(){
+        $this->islogged = $this->authHelper->checkLoggedIn();
+        $this->name = $this->authHelper->getUserName();
+        $this->isAdmin = $this->authHelper->isAdmin();
+        $this->canciones = $this->model->getCanciones();
+    }
+
     function addCanciones (){
-        $this -> Authelper -> isAdmin ();
+
 
         $nombre = $_POST ['nombre'];
         $artista = $_POST ['artista'];
@@ -27,9 +38,17 @@ class AdminController {
         if(!empty($nombre) || !empty ($artista) ||!empty($album)|| !empty ($fecha) || !empty($genero)){
             $this -> AdminModel -> addCancion ($nombre, $artista, $album, $fecha, $genero);
         } else{
-            $this->TablasView-> showCanciones ();
+
+            $this->getData();
+            $this->view-> showAbm($this->name, $this->canciones, $this->islogged, $this->isAdmin);
         } 
             
+    }
+
+    function showAbm(){
+        $this->getData();
+        $this->view->showCanciones($this->name, $this->canciones, $this->islogged, $this->isAdmin);
+
     }
 }
 

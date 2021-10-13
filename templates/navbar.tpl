@@ -11,7 +11,7 @@
         {else}
         <a class="nav-link" href="#">¡Hola, {$userName}!</a>
             {if $isAdmin}
-            <a class="nav-link" href="/abm">Administrar bases de datos</a>
+            <a class="nav-link {if $pagina == 'abm'}active{/if}" href="/abm">Administrar bases de datos</a>
             {/if}
             <a class="nav-link" href="/logout">Log out</a>
         {/if}

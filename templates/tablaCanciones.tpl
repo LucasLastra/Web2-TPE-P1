@@ -1,5 +1,5 @@
 {include file = 'templates/header.tpl'}
-{include file='templates/navbar.tpl'}
+
 <div class="container">
 
     <h1>{$titulo}</h1>
