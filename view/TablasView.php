@@ -43,7 +43,12 @@ class TablasView {
     }
 
     function showGenero($name, $cancionesGenero, $islogged, $isAdmin){
-        $this->smartyAssign($name, $islogged, $isAdmin , $cancionesGenero[0]->nombre_genero, 'genero');
+        if(isset($cancionesGenero[0]->nombre_genero)){
+            $this->smartyAssign($name, $islogged, $isAdmin , $cancionesGenero[0]->nombre_genero, 'genero');
+        }else{
+            $this->smartyAssign($name, $islogged, $isAdmin , 'No hay canciones con este género :c', 'genero');
+        }
+        
         $this->smarty->assign('genero', $cancionesGenero);
         $this->smarty->display('templates/infoGenero.tpl');
     }
@@ -52,4 +57,7 @@ class TablasView {
         header("Location: ".BASE_URL."home");
    }
 
+    function showABMLocation(){
+        header("Location: ".BASE_URL."abm");
+    }
 }
