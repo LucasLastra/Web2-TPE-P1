@@ -8,7 +8,7 @@ class AdminController {
     private $view;
     private $authHelper;
     private $name;
-    private $canciones;
+    private $datos;
     private $islogged;
     private $isAdmin;
 
@@ -19,16 +19,34 @@ class AdminController {
     }
 
     //función privada que trae todos los datos necesarios para mostrar las páginas por cada acción
-    private function getData(){
+    private function getData($datos, $id=''){
         $this->islogged = $this->authHelper->checkLoggedIn();
         $this->name = $this->authHelper->getUserName();
         $this->isAdmin = $this->authHelper->isAdmin();
-        $this->canciones = $this->model->getCanciones();
+
+        switch($datos){
+            case 
+                'canciones': $this->datos = $this->model->getCanciones(); 
+                break;
+            case 
+                'generos': $this->datos = $this->model->getGeneros();
+                break;
+        }
     }
 
     function deleteCancion($id){
         $this->model->deleteCancion($id);
-        $this->view->showABMLocation();
+        $this->view->showABMCancionesLocation();
+    }
+
+    function deleteGenero($id){
+        $cancionesConGenero = $this->model->getCancionesConGenero($id);
+        if(isset($cancionesConGenero[0])){
+            $this->showAbmGeneros('No se puede eliminar un género que tiene canciones!');
+        }else{
+            $this->model->deleteGenero($id);
+            $this->view->showABMGenerosLocation();
+        }  
     }
 
     function addCancion(){
@@ -51,7 +69,7 @@ class AdminController {
             $this->model->addCancion($fecha, $nombre, $album, $artista, $generoDTB->id_genero);
         }  
         //se muestra la location del administrador
-        $this->view->showABMLocation();
+        $this->view->showABMCancionesLocation();
     }
 
     function updateCancion($id){
@@ -90,12 +108,44 @@ class AdminController {
             }
             break;
         }
-        $this->view->showABMLocation();
+        $this->view->showABMCancionesLocation();
 
     }
 
-    function showAbm(){
-        $this->getData();
-        $this->view->showAbm($this->name, $this->canciones, $this->islogged, $this->isAdmin);
+    function updateGenero($id){
+        if(isset($_POST['genero'])){
+            
+            $generoDTB = $this->model->getGenero($_POST['genero']);
+            if($generoDTB->nombre_genero == $_POST['genero']){
+                $this->showAbmGeneros('ya hay un genero con ese nombre!');
+            }else{
+                $this->model->editGenero($_POST['genero'], intval($id));
+            }
+        } 
+        $this->view->showABMGenerosLocation();
+    }
+
+    function addGenero(){       
+        if(isset($_POST['genero'])){
+            
+            $generoDTB = $this->model->getGenero($_POST['genero']);
+            if($generoDTB->nombre_genero == $_POST['genero']){
+                $this->showAbmGeneros('ya hay un genero con ese nombre!');
+            }else{
+                $this->model->addGenero($_POST['genero']);
+                $this->view->showABMGenerosLocation();
+            }
+        } 
+    }
+
+
+    function showAbmCanciones(){
+        $this->getData('canciones');
+        $this->view->showAbmCanciones($this->name, $this->datos, $this->islogged, $this->isAdmin);
+    }
+
+    function showAbmGeneros($msj = ''){
+        $this->getData('generos');
+        $this->view->showAbmGeneros($this->name, $this->datos, $this->islogged, $this->isAdmin, $msj);
     }
 }

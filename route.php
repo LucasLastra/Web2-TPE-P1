@@ -25,8 +25,12 @@ $adminController = new AdminController();
 // determina que camino seguir según la acción
 switch ($params[0]) {
     //ABM
-    case 'abm': 
-        $adminController->showAbm(); 
+    case 'abmCanciones': 
+        $adminController->showAbmCanciones(); 
+        break;
+
+    case 'abmGeneros': 
+        $adminController->showAbmGeneros(); 
         break;
 
     case 'addCancion': 
@@ -39,6 +43,18 @@ switch ($params[0]) {
 
     case 'deleteCancion': 
         $adminController->deleteCancion($params[1]); 
+        break;
+
+    case 'addGenero': 
+        $adminController->addGenero(); 
+        break;
+
+    case 'updateGenero': 
+        $adminController->updateGenero($params[1]); 
+        break;
+
+    case 'deleteGenero': 
+        $adminController->deleteGenero($params[1]); 
         break;
 
     //INDEX
