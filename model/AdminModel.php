@@ -12,6 +12,18 @@ class AdminModel {
         return $sentence->fetchAll(PDO::FETCH_OBJ);
    }
 
+   function getCancionesConGenero($id){
+    $sentence = $this->db->prepare('SELECT * FROM canciones WHERE fk_genero=?');
+    $sentence->execute(array($id));
+    return $sentence->fetchAll(PDO::FETCH_OBJ);
+}
+
+   function getGeneros(){
+    $query = $this->db->prepare('SELECT * FROM genero');
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
     function addCancion ($fecha, $nombre, $album, $artista, $id){
         $sentence = $this->db->prepare("INSERT INTO canciones (fecha, nombre, album, artista, fk_genero) VALUES(?,?,?,?,?)");
         $sentence->execute(array($fecha, $nombre, $album, $artista, $id));
@@ -68,6 +80,10 @@ class AdminModel {
         $sentencia->execute(array($id));
     }
 
+    function deleteGenero($id){
+        $sentencia = $this->db->prepare("DELETE FROM genero WHERE id_genero=?");
+        $sentencia->execute(array($id));
+    }
 
     function getGenero($genero){
         $sentence = $this->db->prepare('SELECT * FROM genero WHERE nombre_genero=?');
@@ -80,6 +96,12 @@ class AdminModel {
         $sentence->execute([$genero]);
         return $sentence->fetch(PDO::FETCH_OBJ);
    }
+
+   function editGenero($newData, $id){
+        $sentencia = $this->db->prepare("UPDATE genero SET nombre_genero=? WHERE id_genero=?");
+
+        $sentencia->execute(array($newData, $id));
+    }
 
 }
 

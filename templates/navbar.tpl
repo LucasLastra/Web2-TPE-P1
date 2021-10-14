@@ -11,7 +11,16 @@
         {else}
         <a class="nav-link" href="#">¡Hola, {$userName}!</a>
             {if $isAdmin}
-            <a class="nav-link {if $pagina == 'abm'}active{/if}" href="/abm">Administrar bases de datos</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {if $pagina == 'abmCanciones' || $pagina == 'abmGeneros'}active{/if}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Administrar bases de datos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item {if $pagina == 'abmCanciones'}active{/if}" href="/abmCanciones">Administrar Canciones</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item {if $pagina == 'abmGeneros'}active{/if}" href="/abmGeneros">Administrar Géneros</a></li>
+                </ul>
+              </li>
             {/if}
             <a class="nav-link" href="/logout">Log out</a>
         {/if}

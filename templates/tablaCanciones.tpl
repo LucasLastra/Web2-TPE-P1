@@ -1,5 +1,5 @@
 {include file = 'templates/header.tpl'}
-{if $pagina == 'abm'}
+{if $pagina == 'abmCanciones'}
 <div class="container-abm container">
     <h1>{$titulo}</h1>
 

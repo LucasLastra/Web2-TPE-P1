@@ -18,10 +18,17 @@ class TablasView {
         $this->smarty->assign('isAdmin', $isAdmin);
     }
 
-    function showAbm($name, $canciones, $islogged, $isAdmin){
-        $this->smartyAssign($name, $islogged, $isAdmin, 'Administrar Base de Datos', 'abm');
+    function showAbmCanciones($name, $canciones, $islogged, $isAdmin){
+        $this->smartyAssign($name, $islogged, $isAdmin, 'Administrar Cancioness', 'abmCanciones');
         $this->smarty->assign('canciones', $canciones);
         $this->smarty->display('templates/tablaCanciones.tpl');
+    }
+
+    function showAbmGeneros($name, $generos, $islogged, $isAdmin, $msj){
+        $this->smarty->assign('msj', $msj);
+        $this->smartyAssign($name, $islogged, $isAdmin, 'Administrar Generos', 'abmGeneros');
+        $this->smarty->assign('generos', $generos);
+        $this->smarty->display('templates/tablaGeneros.tpl');
     }
 
     function showCanciones($name, $canciones, $islogged, $isAdmin){
@@ -57,7 +64,10 @@ class TablasView {
         header("Location: ".BASE_URL."home");
    }
 
-    function showABMLocation(){
-        header("Location: ".BASE_URL."abm");
+    function showABMCancionesLocation(){
+        header("Location: ".BASE_URL."abmCanciones");
+    }
+    function showABMGenerosLocation(){
+        header("Location: ".BASE_URL."abmGeneros");
     }
 }
