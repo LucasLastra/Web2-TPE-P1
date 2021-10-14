@@ -44,6 +44,24 @@ class AdminModel {
         }
         $sentencia->execute(array($newData, $id));
     }
+    function addCategoria ($genero, $nombre_genero)
+    {
+       $sentence = $this->db->prepare("INSERT INTO genero (description , nombre_genero) VALUES (?,?)");
+        $sentence->execute(array($genero, $nombre_genero)
+        );
+    }
+
+    function actualizarCancion($id, $nombre, $artista, $album, $fecha, $genero) {
+        $sentence = $this->db->prepare("UPDATE cancion  SET 
+                                            nombre = ?, 
+                                            artista = ?,
+                                            album = ?, 
+                                            fecha = ?,
+                                            genero = ?,   
+                                        WHERE id = ? ");
+        $sentence->execute(array($nombre, $artista, $album, $fecha,$genero, $id));
+    }
+
 
     function deleteCancion($id){
         $sentencia = $this->db->prepare("DELETE FROM canciones WHERE id_cancion=?");
@@ -62,6 +80,7 @@ class AdminModel {
         $sentence->execute([$genero]);
         return $sentence->fetch(PDO::FETCH_OBJ);
    }
+
 }
 
 

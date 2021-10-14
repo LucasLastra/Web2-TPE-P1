@@ -38,6 +38,7 @@ class AdminController {
         $artista = $_POST['artista'];
         $genero = $_POST['genero'];
         
+
         $generoDTB = $this->model->getGenero($genero);
 
         //si el genero existe en la DBT entonces se agrega la canción con la id_genero
@@ -90,6 +91,7 @@ class AdminController {
             break;
         }
         $this->view->showABMLocation();
+
     }
 
     function showAbm(){
@@ -97,4 +99,3 @@ class AdminController {
         $this->view->showAbm($this->name, $this->canciones, $this->islogged, $this->isAdmin);
     }
 }
-
