@@ -7,7 +7,7 @@
     {if $msj != ''}
     <h3 class="alert-warning">{$msj}</h3>
     {/if}
-    <form class="form-alta add-data" action="addGenero" method="post">
+    <form class="form-alta add-data add-genero" action="addGenero" method="post">
         <input placeholder="Nombre del genero" type="text" name="genero" id="genero" required>
         <input type="submit" class="btn btn-outline-primary" value="Guardar">
     </form>
@@ -25,7 +25,7 @@
                 <td><a href="infoGenero/{$genero->id_genero}">{$genero->nombre_genero}</a></td>
                 <td>
                     <form action="updateGenero/{$genero->id_genero}" method="post">
-                        <input placeholder="nombre" type="text" name="nombre" id="nombre" required>
+                        <input placeholder="nombre" type="text" name="genero" id="genero" required>
                         <input type="submit" class="btn btn-outline-secondary btn-sm" value="Editar">
                     </form>
                 </td>

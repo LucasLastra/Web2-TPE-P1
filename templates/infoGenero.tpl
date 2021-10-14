@@ -2,7 +2,6 @@
 
 <div class="container">
     <h2>{$titulo}</h2>
-    <p> Estos son los géneros disponibles<p>
 <table class="table table-striped table-hover table-light">
     <thead>
         <tr>
