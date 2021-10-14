@@ -39,6 +39,7 @@ li a:hover {
 }
 
 
+
 .dropdown:hover .dropdown-menu{
   display: block;
 }
@@ -47,7 +48,8 @@ li a:hover {
   display: none;
 }
 
-img, .container {
+
+img, .container, .texto {
   box-shadow: 7px 16px 33px 8px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 7px 16px 33px 8px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 7px 16px 33px 8px rgba(0, 0, 0, 0.2);
@@ -56,7 +58,7 @@ img, .container {
   border-radius: 0, 0, 30px, 30px;
 }
 
-.container{
+.container, .texto{
   margin: auto;
   padding: 15px;
   height: 110%;
@@ -109,4 +111,8 @@ td{
 .add-data input,.add-data button{
   margin: 5px;
   padding: 8px;
+}
+
+.nosotros{
+  list-style: none;
 }
