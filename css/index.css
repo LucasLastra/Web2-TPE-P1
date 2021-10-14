@@ -7,6 +7,12 @@ body {
   background-size: 30%;
 }
 
+.img-index{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h1, h2{
   text-align: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -49,7 +55,7 @@ li a:hover {
 }
 
 
-img, .container, .texto {
+img, .texto {
   box-shadow: 7px 16px 33px 8px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 7px 16px 33px 8px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 7px 16px 33px 8px rgba(0, 0, 0, 0.2);
@@ -58,11 +64,10 @@ img, .container, .texto {
   border-radius: 0, 0, 30px, 30px;
 }
 
-.container, .texto{
+.container, .texto {
   margin: auto;
   padding: 15px;
   height: 110%;
-  background-color: rgba(0, 0, 0, 0.2);
 
 }
 
@@ -70,7 +75,7 @@ img, .container, .texto {
   min-height: 900px;
 }
 
-.table-generos{
+.table-generos, .add-genero{
   margin: auto;
   padding: 100px;
   width: 70%;
@@ -114,5 +119,12 @@ td{
 }
 
 .nosotros{
+  padding: 15px;
   list-style: none;
+  display: block;
+}
+
+.dropdown-item{
+  width: 100%;
+  margin: 0;
 }
