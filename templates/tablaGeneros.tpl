@@ -1,7 +1,7 @@
 {include file='templates/header.tpl'}
 
 <div class="container">
-    <h2>Lista de Géneros Musicales</h2>
+    <h1>{$titulo}</h1>
     <table class="table table-striped table-hover table-light">
         <thead>
             <tr>

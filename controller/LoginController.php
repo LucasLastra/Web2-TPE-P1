@@ -21,7 +21,6 @@ class LoginController{
     function showSignup(){
         //$tasks = $this->model->getTasks();
         $this->view->showSignup();
-      
     }
 
     function verifyLogin(){
@@ -32,7 +31,6 @@ class LoginController{
             // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($usuario);
 
-     
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->contraseña)) {
 
@@ -52,19 +50,20 @@ class LoginController{
         $this->view->showLogin("Te deslogueaste!");
     }
 
-
     function verifySignup(){
         $usuario = $_POST['usuario'];
         if(!$this->model->getUser($usuario) == $usuario){
-            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-            $this->model->setUser($usuario, $password);
-            $this->view->showLogin("Usuario creado");
+            if($_POST['password'] != $_POST['password2']){
+                $this->view->showSignup("Las contraseñas no coinciden!");
+            }else{
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $this->model->setUser($usuario, $password);
+                $this->view->showLogin("Usuario creado");
+            }
         }else{
-            $this->view->showLogin("Este usuario ya está en uso!");
+            $this->view->showSignup("Este usuario ya está en uso!");
         }
     }
-    
-
 }
 
 

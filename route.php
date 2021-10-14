@@ -29,6 +29,18 @@ switch ($params[0]) {
         $adminController->showAbm(); 
         break;
 
+    case 'addCancion': 
+        $adminController->addCancion(); 
+        break;
+
+    case 'updateCancion': 
+        $adminController->updateCancion($params[1]); 
+        break;
+
+    case 'deleteCancion': 
+        $adminController->deleteCancion($params[1]); 
+        break;
+
     //INDEX
     case 'home': 
         $indexController->showHome(); 
@@ -45,7 +57,12 @@ switch ($params[0]) {
         $tablasController->infoCancion($params[1]); 
         break;
     case 'infoGenero': 
-        $tablasController->infoGenero($params[1]); 
+        if(isset($params[1])){
+            $tablasController->infoGenero($params[1]); 
+        }else{
+            $tablasController->infoGenero('Vacío');
+        }
+        
         break;
 
     //LOGIN, LOGOUT, SIGNUP    
