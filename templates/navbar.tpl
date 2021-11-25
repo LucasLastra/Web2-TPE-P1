@@ -15,7 +15,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle {if $pagina == 'abmCanciones' || $pagina == 'abmGeneros'}active{/if}"
                     href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Administrar bases de datos
+                    Administrar
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li class="dropdown-item"><a class="dropdown-item {if $pagina == 'abmCanciones'}active{/if}"
@@ -23,8 +23,12 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li class="dropdown-item"><a class="dropdown-item {if $pagina == 'abmGeneros'}active{/if}" href="/abmGeneros">Administrar
-                            Géneros</a></li>
+                    <li class="dropdown-item"><a class="dropdown-item {if $pagina == 'abmGeneros'}active{/if}" 
+                        href="/abmGeneros">Administrar Géneros</a>
+                    </li>
+                    <li class="dropdown-item"><a class="dropdown-item {if $pagina == 'abmUsuarios'}active{/if}" 
+                        href="/abmUsuarios">Administrar Usuarios</a>
+                    </li>
                 </ul>
             </li>
             {/if}

@@ -27,6 +27,15 @@ class LoginView {
         $this->smarty->assign('mensaje', $mensaje); 
         $this->smarty->display('templates/login.tpl');
     }
+
+    function showIndex($name, $islogged, $isAdmin){
+        $this->smarty->assign('titulo', 'Inicio');  
+        $this->smarty->assign('pagina', 'home');
+        $this->smarty->assign('userName', $name);
+        $this->smarty->assign('logueado', $islogged);
+        $this->smarty->assign('isAdmin', $isAdmin);
+        $this->smarty->display('templates/index.tpl');
+    } 
     
     function showHomeLocation($location){
         header("Location: ".BASE_URL.$location);
