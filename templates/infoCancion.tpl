@@ -27,32 +27,10 @@
     </table>
     <a href="../canciones"><button type="button" class="btn btn-outline-dark">Volver al listado</button></a>
 
+    {if $isAdmin || $logueado}
 
-
-    <h3>comentarios:</h3>
-
-    <table class="table table-striped table-hover table-light">
-        <thead>
-
-            <tr>
-                <td colspan="6">comentarios</td>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
-
-    {if $isAdmin}
-    <div class="commentsbox-admin pt-3">
-        <p>admin</p>
-    </div>
-    {elseif $logueado}
-
-    <p>logueado</p>
-    <form class="comments" method="POST">
-        <label>Escriba su comentario</label>
-        <textarea class="form-control" id="comentario" rows="5" required></textarea>
+    <form class="comments" method="POST" value="{$isAdmin}" id="esAdmin">
+        <textarea placeholder="Empieza a escribir..." class="form-control" id="comentario" rows="5" required></textarea>
         <label>Puntuacion</label>
         <select id="puntuacion">
             <option value="1" selected>1</option>
@@ -64,15 +42,13 @@
 
         <input id="postComment" type="button" value="Enviar" class="btn btn-primary btn-comment">
         <input class="hide" value="{$cancion->id_cancion}" id="id">
-        <input class="hide" value="{$isAdmin}" id="esAdmin">
     </form>
 
 
     {else if !$logueado}
-        <p>no logueado</p>
-
+    <h2>Para comentar necesitas tener una cuenta!</h2>
     {/if}
-
+    <h3>comentarios</h3>
     <div id='comentarios' class="commentsbox-user px-5">
 
     </div>

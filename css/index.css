@@ -81,7 +81,7 @@ img, .texto {
   width: 70%;
 }
 
-input, .btn-login, .alert-warning{
+input, .btn-login, .alert-warning, .alert-success{
   margin: 15px;
   padding: 15px;
   width: 100%;
@@ -127,5 +127,13 @@ td{
 .dropdown-item{
   width: 100%;
   margin: 0;
+}
+
+.comentario{
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 15px;
+  padding: 15px;
+  width: 100%;
 }
 
