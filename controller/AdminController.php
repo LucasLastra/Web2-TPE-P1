@@ -18,6 +18,7 @@ class AdminController {
         $this-> authHelper = new AuthHelper ();
     }
 
+
     //función privada que trae todos los datos necesarios para mostrar las páginas por cada acción
     private function getData($datos, $id=''){
         $this->islogged = $this->authHelper->checkLoggedIn();
@@ -31,12 +32,20 @@ class AdminController {
             case 
                 'generos': $this->datos = $this->model->getGeneros();
                 break;
+            case 
+                'usuarios': $this->datos = $this->model->getUsuarios();
+                break;
         }
     }
 
     function deleteCancion($id){
         $this->model->deleteCancion($id);
         $this->view->showABMCancionesLocation();
+    }
+
+    function deleteUsuario($id){
+        $this->model->deleteUsuario($id);
+        $this->view->showABMUsuariosLocation();
     }
 
     function deleteGenero($id){
@@ -55,10 +64,8 @@ class AdminController {
         $album = $_POST['album'];
         $artista = $_POST['artista'];
         $genero = $_POST['genero'];
-        
-
+    
         $generoDTB = $this->model->getGenero($genero);
-
         //si el genero existe en la DBT entonces se agrega la canción con la id_genero
         if($generoDTB->nombre_genero == $genero){
             $this->model->addCancion($fecha, $nombre, $album, $artista, $generoDTB->id_genero);
@@ -71,6 +78,20 @@ class AdminController {
         //se muestra la location del administrador
         $this->view->showABMCancionesLocation();
     }
+
+    function addGenero(){       
+        if(isset($_POST['genero'])){
+            
+            $generoDTB = $this->model->getGenero($_POST['genero']);
+            if($generoDTB->nombre_genero == $_POST['genero']){
+                $this->showAbmGeneros('ya hay un genero con ese nombre!');
+            }else{
+                $this->model->addGenero($_POST['genero']);
+                $this->view->showABMGenerosLocation();
+            }
+        } 
+    }
+
 
     function updateCancion($id){
         switch($_POST){
@@ -125,19 +146,27 @@ class AdminController {
         $this->view->showABMGenerosLocation();
     }
 
-    function addGenero(){       
-        if(isset($_POST['genero'])){
-            
-            $generoDTB = $this->model->getGenero($_POST['genero']);
-            if($generoDTB->nombre_genero == $_POST['genero']){
-                $this->showAbmGeneros('ya hay un genero con ese nombre!');
-            }else{
-                $this->model->addGenero($_POST['genero']);
-                $this->view->showABMGenerosLocation();
-            }
-        } 
-    }
 
+    function updateUsuario($id){
+        if($_POST['admin'] == true){
+            $admin = 1;
+        }else{
+            $admin = 0;
+        }
+        if(isset($_POST['nombre']) && $_POST['nombre'] != ''){
+            
+            $usuarioDTB = $this->model->getUsuario($_POST['nombre']);
+            if($usuarioDTB->nombre == $_POST['nombre'] && $usuarioDTB->id_usuario != $id){
+                $this->showAbmUsuarios('ya hay un usuario con ese nombre!');
+            }else{
+                $this->model->editNombreUsuario($_POST['nombre'], intval($id));
+                $this->model->editAdminUsuario($admin, intval($id));
+            }
+        } else{
+            $this->model->editAdminUsuario($admin, intval($id));
+        } 
+        $this->view->showABMUsuariosLocation();
+    }
 
     function showAbmCanciones(){
         $this->getData('canciones');
@@ -147,5 +176,10 @@ class AdminController {
     function showAbmGeneros($msj = ''){
         $this->getData('generos');
         $this->view->showAbmGeneros($this->name, $this->datos, $this->islogged, $this->isAdmin, $msj);
+    }
+
+    function showAbmUsuarios($msj = ''){
+        $this->getData('usuarios');
+        $this->view->showAbmUsuarios($this->name, $this->datos, $this->islogged, $this->isAdmin, $msj);
     }
 }

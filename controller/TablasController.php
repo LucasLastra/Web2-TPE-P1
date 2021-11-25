@@ -11,6 +11,7 @@ class TablasController{
     private $datos;
     private $islogged;
     private $isAdmin;
+    private $comentarios;
 
     function __construct(){
         $this->model = new TablasModel();
@@ -32,6 +33,7 @@ class TablasController{
                 break;
             case 
                 'cancion': $this->datos = $this->model->getCancion($id); 
+                            $this->comentarios = $this->model->getComentarios($id);
                 break;
             case 
                 'genero': $this->datos = $this->model->getGenero($id);
@@ -51,7 +53,7 @@ class TablasController{
 
     function infoCancion($id){
         $this->getData('cancion', $id);
-        $this->view->showCancion($this->name, $this->datos, $this->islogged, $this->isAdmin);
+        $this->view->showCancion($this->name, $this->datos, $this->islogged, $this->isAdmin, $this->comentarios);
     }
 
     function infoGenero($id){

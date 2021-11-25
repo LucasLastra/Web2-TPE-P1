@@ -44,6 +44,33 @@ CREATE TABLE IF NOT EXISTS `canciones` (
 ENGINE = InnoDB;
 
 
+
+CREATE TABLE IF NOT EXISTS `comentarios` (
+  `id_comentarios` INT NOT NULL AUTO_INCREMENT,
+  `comentario` VARCHAR(300) NOT NULL,
+  `puntuacion` INT(1) NOT NULL,
+  `fk_cancion` INT NOT NULL,
+  PRIMARY KEY (`id_comentarios`, `fk_cancion`),
+  INDEX `fk_comentarios_canciones1_idx` (`fk_cancion` ASC),
+  CONSTRAINT `fk_comentarios_canciones1`
+    FOREIGN KEY (`fk_cancion`)
+    REFERENCES `canciones` (`id_cancion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+INSERT INTO comentarios
+(comentario, puntuacion, fk_cancion)
+ VALUES
+ ('Hola!!', 0, 42),
+ ('aaaaaaaaaaaa', 0, 43),
+ ('Hola!!', 0, 44,
+ ('Hola!!', 0, 46);
+ ('Hola!!', 0, 47,
+ ('Hola!!', 0, 46);
+
+
 INSERT INTO genero
  VALUES
  (1,'Alternativa/independiente'),

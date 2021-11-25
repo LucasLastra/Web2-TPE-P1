@@ -58,7 +58,11 @@ class LoginController{
             }else{
                 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $this->model->setUser($usuario, $password);
-                $this->view->showLogin("Usuario creado");
+                session_start();
+                $user = $this->model->getUser($usuario);
+                $_SESSION["usuario"] = $usuario;
+                $_SESSION["isAdmin"] = $user->esAdmin;
+                $this->view->showHome();
             }
         }else{
             $this->view->showSignup("Este usuario ya está en uso!");

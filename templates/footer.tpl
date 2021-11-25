@@ -2,8 +2,7 @@
 </div>
 <div class= "nosotros">
     <tr>
-        <td> Lucas Lastra, </td>
-        <td> Lucía Rubiales </td>
+        <td> Lucas Lastra </td>
         <td>- 2021 </td>
     </tr>
 </div>

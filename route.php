@@ -24,6 +24,20 @@ $adminController = new AdminController();
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
+    //ABM usuarios
+    case 'abmUsuarios': 
+        $adminController->showAbmUsuarios(); 
+        break;
+
+    case 'deleteUsuario': 
+        $adminController->deleteUsuario($params[1]); 
+        break;
+
+    case 'updateUsuario': 
+        $adminController->updateUsuario($params[1]); 
+        break;
+
+
     //ABM
     case 'abmCanciones': 
         $adminController->showAbmCanciones(); 
@@ -70,15 +84,14 @@ switch ($params[0]) {
         $tablasController->showGeneros(); 
         break;
     case 'infoCancion': 
-        $tablasController->infoCancion($params[1]); 
-        break;
+       $tablasController->infoCancion($params[1]); 
+       break;
     case 'infoGenero': 
         if(isset($params[1])){
             $tablasController->infoGenero($params[1]); 
         }else{
             $tablasController->infoGenero('Vacío');
         }
-        
         break;
 
     //LOGIN, LOGOUT, SIGNUP    

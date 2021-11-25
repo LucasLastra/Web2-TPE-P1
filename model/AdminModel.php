@@ -10,19 +10,25 @@ class AdminModel {
         $sentence = $this->db->prepare('SELECT * FROM canciones AS c INNER JOIN genero AS g ON c.fk_genero = g.id_genero');
         $sentence->execute();
         return $sentence->fetchAll(PDO::FETCH_OBJ);
-   }
+    }
 
    function getCancionesConGenero($id){
     $sentence = $this->db->prepare('SELECT * FROM canciones WHERE fk_genero=?');
     $sentence->execute(array($id));
     return $sentence->fetchAll(PDO::FETCH_OBJ);
-}
+    }
 
    function getGeneros(){
     $query = $this->db->prepare('SELECT * FROM genero');
     $query->execute();
     return $query->fetchAll(PDO::FETCH_OBJ);
-}
+    }
+
+    function getUsuarios(){
+        $query = $this->db->prepare('SELECT * FROM users');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 
     function addCancion ($fecha, $nombre, $album, $artista, $id){
         $sentence = $this->db->prepare("INSERT INTO canciones (fecha, nombre, album, artista, fk_genero) VALUES(?,?,?,?,?)");
@@ -85,11 +91,22 @@ class AdminModel {
         $sentencia->execute(array($id));
     }
 
+    function deleteUsuario($id){
+        $sentencia = $this->db->prepare("DELETE FROM users WHERE id_usuario=?");
+        $sentencia->execute(array($id));
+    }
+
     function getGenero($genero){
         $sentence = $this->db->prepare('SELECT * FROM genero WHERE nombre_genero=?');
         $sentence->execute([$genero]);
         return $sentence->fetch(PDO::FETCH_OBJ);
    }
+
+   function getUsuario($usuario){
+    $sentence = $this->db->prepare('SELECT * FROM users WHERE nombre=?');
+    $sentence->execute([$usuario]);
+    return $sentence->fetch(PDO::FETCH_OBJ);
+}
 
    function addGenero($genero){
         $sentence = $this->db->prepare("INSERT INTO genero (nombre_genero) VALUES(?)");
@@ -103,6 +120,14 @@ class AdminModel {
         $sentencia->execute(array($newData, $id));
     }
 
+    function editNombreUsuario($newData, $id){
+        $sentencia = $this->db->prepare("UPDATE users SET nombre=? WHERE id_usuario=?");
+        $sentencia->execute(array($newData, $id));
+    }
+    function editAdminUsuario($newData, $id){
+        $sentencia = $this->db->prepare("UPDATE users SET esAdmin=? WHERE id_usuario=?");
+        $sentencia->execute(array($newData, $id));
+    }
 }
 
 

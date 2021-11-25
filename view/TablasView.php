@@ -31,6 +31,13 @@ class TablasView {
         $this->smarty->display('templates/tablaGeneros.tpl');
     }
 
+    function showAbmUsuarios($name, $usuarios, $islogged, $isAdmin, $msj){
+        $this->smarty->assign('msj', $msj);
+        $this->smartyAssign($name, $islogged, $isAdmin, 'Administrar Usuarios', 'abmUsuarios');
+        $this->smarty->assign('usuarios', $usuarios);
+        $this->smarty->display('templates/abmUsuarios.tpl');
+    }
+
     function showCanciones($name, $canciones, $islogged, $isAdmin){
         $this->smartyAssign($name, $islogged, $isAdmin , 'Tabla de Canciones', 'canciones');
         $this->smarty->assign('canciones', $canciones);
@@ -43,9 +50,10 @@ class TablasView {
         $this->smarty->display('templates/tablaGeneros.tpl');
     } 
 
-    function showCancion($name, $cancion, $islogged, $isAdmin){
+    function showCancion($name, $cancion, $islogged, $isAdmin, $comentarios){
         $this->smartyAssign($name, $islogged, $isAdmin , $cancion->nombre, 'cancion');
         $this->smarty->assign('cancion', $cancion);
+        $this->smarty->assign('comentarios', $comentarios);
         $this->smarty->display('templates/infoCancion.tpl');
     }
 
@@ -69,5 +77,9 @@ class TablasView {
     }
     function showABMGenerosLocation(){
         header("Location: ".BASE_URL."abmGeneros");
+    }
+
+    function showABMUsuariosLocation(){
+        header("Location: ".BASE_URL."abmUsuarios");
     }
 }

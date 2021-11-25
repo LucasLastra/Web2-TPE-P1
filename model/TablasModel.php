@@ -22,7 +22,12 @@ class TablasModel{
      function getCancion($id){
           $query = $this->db->prepare( "SELECT * FROM canciones AS c INNER JOIN genero AS g 
           ON c.fk_genero = g.id_genero WHERE id_cancion=?");
+          $query->execute(array($id));
+          return $query->fetch(PDO::FETCH_OBJ);
+     }
 
+     function getComentarios($id){
+          $query = $this->db->prepare( "SELECT * FROM comentarios WHERE fk_cancion=?");
           $query->execute(array($id));
           return $query->fetch(PDO::FETCH_OBJ);
      }
