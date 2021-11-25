@@ -13,14 +13,6 @@ class ApiCommentsController{
 
         $comentarios = $this->model->getComments();
         return $this->view->response($comentarios, 200);
-        /*params get comments by news
-        $id_news = $_GET['noticia'] ?? ""; //?? "" Operador de fusión de null
-        if (isset($_GET['noticia']) && !empty($_GET['noticia'])) {
-            $news_comms = $this->model->getCommentsByNews($id_news);
-            $this->view->response($news_comms, 200);
-        } else {
-            $this->view->response("no se encontraron comentarios", 404);
-        }*/
     }
 
     function getCommentsCancion($params = null){
@@ -46,22 +38,9 @@ class ApiCommentsController{
                 $this->view->response("Error al insertar comentario", 400);
             }
         } catch (Exception) {
-            $this->view->response("Error usuario no encontrado", 404);
+            $this->view->response("Error comentario no encontrado", 404);
         }
 
-        /*
-        $id = $params[':ID'];
-        try {
-            $post = $this->model->postComment($_POST['comentario'], $_POST['puntuacion'], $id);
-            if (!$post) {
-                $this->view->response("Comentario Insertado", 200);
-            } else {
-                $this->view->response("Error al insertar comentario", 400);
-            }
-        } catch (Exception) {
-            $this->view->response("Error usuario no encontrado", 404);
-        }
-        //$this->view->showCancionLocation($id);*/
     }
 
     function deleteComment($params = []){
