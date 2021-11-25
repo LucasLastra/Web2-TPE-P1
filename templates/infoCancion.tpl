@@ -27,9 +27,14 @@
     </table>
     <a href="../canciones"><button type="button" class="btn btn-outline-dark">Volver al listado</button></a>
 
+    <h3>comentarios</h3>
+    <div id='comentarios' >
+
+    </div>
+
     {if $isAdmin || $logueado}
 
-    <form class="comments" method="POST" value="{$isAdmin}" id="esAdmin">
+    <form class="comments" method="POST">
         <textarea placeholder="Empieza a escribir..." class="form-control" id="comentario" rows="5" required></textarea>
         <label>Puntuacion</label>
         <select id="puntuacion">
@@ -44,16 +49,9 @@
         <input class="hide" value="{$cancion->id_cancion}" id="id">
     </form>
 
-
     {else if !$logueado}
     <h2>Para comentar necesitas tener una cuenta!</h2>
     {/if}
-    <h3>comentarios</h3>
-    <div id='comentarios' class="commentsbox-user px-5">
-
-    </div>
 
 </div>
-
 <script src="../js/comments.js"></script>
-{include file='templates/footer.tpl'}

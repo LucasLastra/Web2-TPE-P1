@@ -135,5 +135,10 @@ td{
   margin: 15px;
   padding: 15px;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.212);
+  border-radius: 3%;
 }
 
+.hide{
+  display: none;
+}
