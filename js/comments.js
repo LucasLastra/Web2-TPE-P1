@@ -23,8 +23,8 @@ async function loadComments(idCancion) {
       document.getElementById("comentarios").innerHTML +=
 
         `<div class="comentario" id="comentario${data[i].id_comentarios}">
-        <h4 class="alert-warning">Puntuación: ${data[i]["puntuacion"]}</h4>
-            <h5 class='comentario'>${data[i]["comentario"]}</h5>`;
+        <h4 class="alert-success">Puntuación: ${data[i]["puntuacion"]}</h4>
+            <h5>${data[i]["comentario"]}</h5>`;
 
       if (admin == 1) {
         document.getElementById(
